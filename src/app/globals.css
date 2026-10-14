@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+/* Editorial, restrained: warm paper in light, near-black ink in dark. One accent. */
+:root {
+  --bg: #f3f0e8;
+  --surface: #fbfaf6;
+  --ink: #16150f;
+  --muted: #6d695e;
+  --faint: #9c978a;
+  --line: #dcd6c8;
+  --accent: #23392f;
+  --accent-ink: #f3f0e8;
+  --pos: #1f6a46;
+  --neg: #a2372a;
+  --warn: #8a5a12;
+  --warn-bg: #f5ead2;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e0e0c;
+    --surface: #161613;
+    --ink: #ece9e1;
+    --muted: #9b968a;
+    --faint: #6b675e;
+    --line: #2a2924;
+    --accent: #c9d8cf;
+    --accent-ink: #0e0e0c;
+    --pos: #6cc296;
+    --neg: #ec8b77;
+    --warn: #e2b768;
+    --warn-bg: #2a2214;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-pos: var(--pos);
+  --color-neg: var(--neg);
+  --color-warn: var(--warn);
+  --color-warn-bg: var(--warn-bg);
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+.num { font-variant-numeric: tabular-nums lining-nums; }
+.eyebrow { font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+/* Form controls: quiet, large touch targets for iPhone (16px stops iOS zoom). */
+.field {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+  font-size: 16px;
+  color: var(--ink);
+}
+.field:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+  min-height: 2.5rem; padding: 0 1rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500;
+  background: var(--accent); color: var(--accent-ink);
+}
+.btn:disabled { opacity: 0.5; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn-danger { background: transparent; color: var(--neg); border: 1px solid var(--line); }
+
+table.data { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+table.data th { text-align: right; font-weight: 500; color: var(--muted); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+table.data td { text-align: right; padding: 0.7rem 0.75rem; border-bottom: 1px solid var(--line); white-space: nowrap; font-variant-numeric: tabular-nums; }
+table.data th:first-child, table.data td:first-child { text-align: left; padding-left: 0; }
+table.data th:last-child, table.data td:last-child { padding-right: 0; }
+table.data td.l, table.data th.l { text-align: left; }
